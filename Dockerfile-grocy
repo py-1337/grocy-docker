@@ -1,18 +1,9 @@
-FROM alpine:3.12.3
+ARG PLATFORM
+
+FROM --platform=${PLATFORM} docker.io/alpine:3.13.5
 LABEL maintainer "Talmai Oliveira <to@talm.ai>, James Addison <jay@jp-hosting.net>"
 
 ARG GROCY_VERSION
-
-# Optionally authenticate with GitHub using an API token
-#
-# This can reduce instances of download rate limiting by GitHub
-# https://developer.github.com/v3/#rate-limiting
-#
-# This value is *not* assigned to a variable using the ENV instruction,
-# since those variables are persisted in the resulting image and could leak
-# developer credentials
-# https://docs.docker.com/engine/reference/builder/#env
-ARG GITHUB_API_TOKEN
 
 # ensure www-data user exists
 RUN set -eux; \
@@ -35,10 +26,12 @@ RUN     apk update && \
 RUN     apk add --no-cache \
             php7-ctype \
             php7-fpm \
+            php7-exif \
             php7-fileinfo \
+            php7-gd \
             php7-iconv \
             php7-json \
-            php7-gd \
+            php7-ldap \
             php7-pdo_sqlite \
             php7-simplexml \
             php7-tokenizer
@@ -66,8 +59,7 @@ RUN     set -o pipefail && \
         cp config-dist.php data/config.php
 
 # Install application dependencies
-RUN     COMPOSER_OAUTH=${GITHUB_API_TOKEN:+"\"github.com\": \"${GITHUB_API_TOKEN}\""} && \
-        COMPOSER_AUTH="{\"github-oauth\": { ${COMPOSER_OAUTH} }}" composer install --no-interaction --no-dev --optimize-autoloader && \
+RUN     composer install --no-interaction --no-dev --optimize-autoloader && \
         composer clear-cache
 
 # Remove build-time dependencies (privileged)

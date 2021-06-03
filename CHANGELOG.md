@@ -1,5 +1,91 @@
 # Changelog
 
+## [v3.0.1-11] - 2021-05-02
+
+### Changed
+
+- Rebuild container images with new Alpine 3.13.5 release
+- [Minor] Update snyk vulnerability scan
+
+## [v3.0.1-10] - 2021-03-25
+
+### Changed
+
+- Rebuild container images with new Alpine 3.13.3 release
+- [Minor] Update snyk vulnerability scan
+
+## [v3.0.1-9] - 2020-02-18
+
+### Added
+
+- Experimental support for multi-architecture OCI image builds
+
+### Changed
+
+- Rebuild container images with new Alpine 3.13.2 release
+
+## [v3.0.1-8] - 2020-01-29
+
+### Changed
+
+- Rebuild container images with new Alpine 3.13.1 release
+
+## [v3.0.1-7] - 2020-01-15
+
+### Changed
+
+- Migrate to a release-initiated GitHub Actions workflow
+- Consistency: remove custom naming from docker/login-action step
+
+## [v3.0.1-6] - 2020-01-15
+
+### Changed
+
+- Really this time.
+
+## [v3.0.1-5] - 2020-01-15
+
+### Changed
+
+- Remove `GITHUB_API_TOKEN` from container build arguments
+
+## [v3.0.1-4] - 2020-01-15
+
+### Changed
+
+- Cleanup for GitHub Actions workflow
+
+## [v3.0.1-3] - 2020-01-15
+
+### Changed
+
+- Fixup for GitHub Actions workflow: include image tag during 'docker-push' step
+
+## [v3.0.1-2] - 2020-01-15
+
+### Changed
+
+- Rebuild container images with new Alpine 3.13.0 release
+
+## [v3.0.1-1] - 2021-01-05
+
+### Changed
+
+- Upgrade to grocy release v3.0.1
+
+## [v3.0.0-2] - 2021-01-02
+
+### Added
+
+- Docker Hub container upload automation using GitHub Actions
+
+### Changed
+
+- Supply PHP EXIF and LDAP library dependencies at build-time
+- [Minor] Update snyk vulnerability scan
+- [Minor] Refresh package-lock.json version, and remove container version suffix
+- Run vulnerability scans using 'latest' container image tag
+
 ## [v3.0.0-1] - 2020-12-22
 
 ### Changed
